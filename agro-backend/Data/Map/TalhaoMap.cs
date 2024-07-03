@@ -1,4 +1,5 @@
 using agro_backend.Models;
+using agro_models.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -6,7 +7,7 @@ namespace agro_backend.Data.Map
 {
     public class TalhaoMap : IEntityTypeConfiguration<TalhaoModel>
     {
-        public void Configure(EntityTypeBuilder<FazendaModel> builder)
+         public void Configure(EntityTypeBuilder<TalhaoModel> builder)
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Nome).IsRequired().HasMaxLength(255);
