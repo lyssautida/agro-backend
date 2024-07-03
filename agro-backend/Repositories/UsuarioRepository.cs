@@ -45,8 +45,9 @@ namespace agro_backend.Repositories
                 throw new Exception($"Usuário para ID:{id} não foi encontrado noa banco de dados.");
             }
 
-            usuarioPorId.Name = usuario.Name;
+            usuarioPorId.Nome = usuario.Nome;
             usuarioPorId.Email = usuario.Email;
+            usuarioPorId.Senha = usuario.Senha;
 
             _dBContext.Usuarios.Update(usuarioPorId);
             await _dBContext.SaveChangesAsync();
@@ -56,7 +57,7 @@ namespace agro_backend.Repositories
 
         public async Task<UsuarioModel> BuscarPorId(int id)
         {
-            return await _dBContext.Usuarios.FirstOrDefaultAsync(x => x.id == id);
+            return await _dBContext.Usuarios.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<List<UsuarioModel>> BuscarTodosUsuarios()
