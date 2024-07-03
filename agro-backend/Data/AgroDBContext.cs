@@ -13,20 +13,15 @@ namespace agro_backend.Data
     {
         protected readonly IConfiguration Configuration;  
 
-        public AgroDBContext(IConfiguration configuration, DbSet<UsuarioModel> usuarios, DbSet<FazendaModel> fazendas, DbSet<TalhaoModel> talhoes)
+        public AgroDBContext(IConfiguration configuration)
         {
             Configuration = configuration;
-            Usuarios = usuarios;
-            Fazendas = fazendas;
-            Talhoes = talhoes;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseNpgsql(Configuration.GetConnectionString("AgroDataBase"));
         }
-
-        public AgroDBContext(DbContextOptions<AgroDBContext> options) : base(options) { }
 
         public DbSet<UsuarioModel> Usuarios { get; set; }
         public DbSet<FazendaModel> Fazendas { get; set; }
