@@ -27,7 +27,7 @@ namespace agro_backend.Repositories
 
             if (usuarioPorId == null)
             {
-                throw new Exception($"Usuário para ID:{id} não foi encontrado noa banco de dados.");
+                throw new Exception($"Usuário para ID:{id} não foi encontrado no banco de dados.");
             }
 
             _dBContext.Usuarios.Update(usuarioPorId);
@@ -42,12 +42,14 @@ namespace agro_backend.Repositories
 
             if (usuarioPorId == null)
             {
-                throw new Exception($"Usuário para ID:{id} não foi encontrado noa banco de dados.");
+                throw new Exception($"Usuário para ID:{id} não foi encontrado no banco de dados.");
             }
 
             usuarioPorId.Nome = usuario.Nome;
             usuarioPorId.Email = usuario.Email;
             usuarioPorId.Senha = usuario.Senha;
+            usuarioPorId.AtualizadoEm = usuario.AtualizadoEm;
+            usuarioPorId.InativadoEm = usuario.InativadoEm;
 
             _dBContext.Usuarios.Update(usuarioPorId);
             await _dBContext.SaveChangesAsync();
