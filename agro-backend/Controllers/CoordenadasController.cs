@@ -8,22 +8,17 @@ namespace agro_backend.Controllers
     public class CoordenadasController
     {
         [HttpGet]
-        public String BuscarCoordenadas()
+        public IActionResult BuscarCoordenadas()
         {
 
             var coordenadasRetorno = new
             {
 
-                coordenadas = "Latitude: -15.6014, Longitude: -56.0979",
-                cidade = "Cidade: Cuiabá",
-                uf = "UF: MT",
+                coordenadas = "-15.6014, Longitude: -56.0979",
+                cidade = "Cuiabá",
+                uf = "MT",
             };
-            return Ok(coordenadasRetorno);
-        }
-
-        private string Ok(object coordenadasRetorno)
-        {
-            throw new NotImplementedException();
+            return new JsonResult(coordenadasRetorno);
         }
     }
 }
